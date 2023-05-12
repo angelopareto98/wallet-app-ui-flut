@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wallet_app_ui/util/my_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+// controller for cards
+  final _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +52,7 @@ class _HomePageState extends State<HomePage> {
             height: 200,
             child: PageView(
               scrollDirection: Axis.horizontal,
+              controller: _pageController,
               children: [
                 MyCard(
                   balance: 5250.20,
@@ -73,6 +78,31 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          SmoothPageIndicator(
+              controller: _pageController,
+              count: 3,
+              effect:
+                  ScrollingDotsEffect(activeDotColor: Colors.grey.shade800)),
+          const SizedBox(
+            height: 30,
+          ),
+          Row(
+            children: [
+              Container(
+                height: 100,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: Center(
+                  child: Image.asset("assets/image/send-money.png"),
+                ),
+              )
+            ],
+          )
         ]),
       ),
     );
