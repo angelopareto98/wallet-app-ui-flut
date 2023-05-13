@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:wallet_app_ui/util/my_button.dart';
 import 'package:wallet_app_ui/util/my_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -89,21 +90,117 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 30,
           ),
-          Row(
-            children: [
-              Container(
-                height: 100,
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50)),
-                child: Center(
-                  child: Image.asset("assets/image/send-money.png"),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 25.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                MyButton(labelButton: "Send", namImage: "send-money.png"),
+                MyButton(labelButton: "Paypal", namImage: "credi-card.png"),
+                MyButton(labelButton: "Bills", namImage: "bill.png"),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            margin: EdgeInsets.only(right: 25, left: 25, top: 30),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                          ),
+                          child: Image.asset(
+                            "assets/image/statistics.png",
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Statistics",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text("Payements and Icome")
+                          ],
+                        ),
+                      ],
+                    ),
+                    const Icon(Icons.arrow_forward_ios)
+                  ],
                 ),
-              )
-            ],
-          )
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                          ),
+                          child: Image.asset(
+                            "assets/image/transaction.png",
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              "Transaction",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Text("Your transaction")
+                          ],
+                        ),
+                      ],
+                    ),
+                    const Icon(Icons.arrow_forward_ios)
+                  ],
+                )
+              ],
+            ),
+          ),
         ]),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.monetization_on),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.home)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+          ],
+        ),
       ),
     );
   }
